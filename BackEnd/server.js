@@ -3,6 +3,25 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 
+//variable to install mongoose
+var mongoose = require('mongoose');
+
+//connection string linking to mlab database
+var mongoDB = 'mongodb://cooke94:password1@ds139883.mlab.com:39883/lab5rc';
+mongoose.connect(mongoDB);
+
+//Schema
+var Schema = mongoose.Schema;
+
+//format for the entries
+var postSchema = new Schema({
+    title: String,
+    content: String
+});
+
+//Posts data to mlab database
+var PostData = mongoose.model('post', postSchema);
+
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({ extended: false })); 
 app.use(bodyParser.json());
@@ -28,25 +47,20 @@ app.post('/api/posts', function(req, res){
     console.log("post successful");
     console.log(req.body.title);
     console.log(req.body.content);
+
+    PostData.create({
+        title:req.body.title,
+        content:req.body.content
+    });
+
 })
 
 app.get('/api/posts', function(req, res){
 
-    const posts = 
-    [
-        { 
-            "id": "fadf12421l", 
-            "title": "First server-side post", 
-            "content": "This is coming from the server" 
-        }, 
-        { 
-            "id": "ksajflaj132", 
-            "title": "Second server-side post", 
-            "content": "This is coming from the server!" 
-        }
-    ];
+    PostData.find(function(err,data){
 
-    res.status(200).json({posts:posts})
+    res.json(data);
+    })
 })
 
 
