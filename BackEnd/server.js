@@ -66,6 +66,26 @@ app.get('/api/posts', function(req, res){
     })
 })
 
+//update
+app.get('/api/posts/:id', function(req, res){
+    console.log("Read doc with ID" + req.params.id);
+
+    PostData.findById(req.params.id, function (err, data) {
+        res.json(data);
+    });
+})
+
+app.put('/api/posts/:id', function(req, res){
+    console.log("Update called on " + req.params.id);
+    console.log(req.body.title);
+    console.log(req.body.content);
+
+    PostData.findByIdAndUpdate(req.params.id, req.body,
+    function(err, data){
+        res.send(data);
+    })
+})
+
 app.delete('/api/posts/:id', function(req,res){
     console.log(req.params.id);
 
