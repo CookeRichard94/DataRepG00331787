@@ -23,7 +23,7 @@ import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 
 const appRoutes: Routes = [
   {
-    path: 'list',
+    path: 'review',
     component: PostDetailsComponent
   },
   {
