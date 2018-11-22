@@ -17,10 +17,7 @@ import { MatInputModule,
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { AddUpcomingComponent } from './add-upcoming/add-upcoming.component';
-import { AddReviewComponent } from './add-review/add-review.component';
 import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
-import { ListReviewComponent } from './list-review/list-review.component';
-import { UpdateReviewComponent } from './update-review/update-review.component';
 import { ListUpcomingComponent } from './list-upcoming/list-upcoming.component';
 import { UpdateUpcomingComponent } from './update-upcoming/update-upcoming.component';
 
@@ -30,13 +27,31 @@ const appRoutes: Routes = [
     component: PostDetailsComponent
   },
   {
-    path: 'create',
+    path: 'addreview',
     component: PostCreateComponent
   },
   {
     path: 'edit/:id',
     component: PostEditComponent
+  },
+  {
+    path: 'addUpcoming',
+    component: AddUpcomingComponent
+  },
+  {
+  path: 'upcoming',
+  component: ListUpcomingComponent
+  },
+  {
+    path: 'photos',
+    component: PhotoGalleryComponent
+  },
+  {
+    path: 'edit2/:id',
+    component: UpdateUpcomingComponent
   }
+  
+
 ];
 
 
@@ -47,10 +62,7 @@ const appRoutes: Routes = [
     PostCreateComponent,
     PostEditComponent,
     AddUpcomingComponent,
-    AddReviewComponent,
     PhotoGalleryComponent,
-    ListReviewComponent,
-    UpdateReviewComponent,
     ListUpcomingComponent,
     UpdateUpcomingComponent
   ],

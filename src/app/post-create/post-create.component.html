@@ -12,6 +12,17 @@
       <mat-error *ngIf="title.invalid">Please enter the destination.</mat-error>
     </mat-form-field>
     <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="city"
+        ngModel
+        required
+        minlength="3"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter the city.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
       <textarea
         matInput
         rows="4"
@@ -19,7 +30,18 @@
         ngModel
         required
         #content="ngModel"></textarea>
-      <mat-error *ngIf="content.invalid">Please the date of your journey.</mat-error>
+      <mat-error *ngIf="content.invalid">Please a review of your journey.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="rating"
+        ngModel
+        required
+        minlength="3"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter the destination a rating</mat-error>
     </mat-form-field>
     <button
       mat-raised-button
