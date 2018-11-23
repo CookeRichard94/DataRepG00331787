@@ -16,7 +16,8 @@ var Schema = mongoose.Schema;
 //format for the entries
 var postSchema = new Schema({
     title: String,
-    content: String
+    content: String,
+    city: String
 });
 
 //Posts data to mlab database
@@ -33,25 +34,18 @@ app.use(function(req, res, next) {
     "Origin, X-Requested-With, Content-Type, Accept");
     next();
     });
-    
-app.post('/name', function(req, res){
-    res.send("Hello you sent " +
-    req.body.firstname + " " +
-    req.body.lastname);
-})
-
-app.get('/', function (req, res) {
-   res.send('Hello from Express');
-})
 
 app.post('/api/posts', function(req, res){
     console.log("post successful");
     console.log(req.body.title);
     console.log(req.body.content);
+    console.log(req.body.rating);
+    console.log(req.body.city);
 
     PostData.create({
         title:req.body.title,
-        content:req.body.content
+        content:req.body.content,
+        city:req.body.city
     });
 
     res.send("Post added");
@@ -79,6 +73,7 @@ app.put('/api/posts/:id', function(req, res){
     console.log("Update called on " + req.params.id);
     console.log(req.body.title);
     console.log(req.body.content);
+    console.log(req.body.city);
 
     PostData.findByIdAndUpdate(req.params.id, req.body,
     function(err, data){
@@ -95,7 +90,6 @@ app.delete('/api/posts/:id', function(req,res){
         res.send(data);
     });
 })
-
 
 var server = app.listen(8081, function () {
    var host = server.address().address

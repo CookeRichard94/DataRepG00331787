@@ -9,7 +9,7 @@
         required
         minlength="3"
         #title="ngModel">
-      <mat-error *ngIf="title.invalid">Please enter the destination.</mat-error>
+      <mat-error *ngIf="title.invalid">Please enter the country.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -39,9 +39,8 @@
         name="rating"
         ngModel
         required
-        minlength="3"
         #title="ngModel">
-      <mat-error *ngIf="title.invalid">Please enter the destination a rating</mat-error>
+      <mat-error *ngIf="title.invalid">Please enter a rating for the destination</mat-error>
     </mat-form-field>
     <button
       mat-raised-button
