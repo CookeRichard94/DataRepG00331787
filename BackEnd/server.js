@@ -13,15 +13,24 @@ mongoose.connect(mongoDB);
 //Schema
 var Schema = mongoose.Schema;
 
-//format for the entries
+//format for the entries for reviews
 var postSchema = new Schema({
     title: String,
     content: String,
-    city: String
+    city: String,
+    rating: Number
 });
+
+//format for entries for upcoming journeys
+var upcomingSchema = new Schema({
+    country:String,
+    city: String,
+    year: Number
+})
 
 //Posts data to mlab database
 var PostData = mongoose.model('post', postSchema);
+var UpcomingData = mongoose.model('upcoming', upcomingSchema);
 
 //Here we are configuring express to use body-parser as middle-ware. 
 app.use(bodyParser.urlencoded({ extended: false })); 
@@ -35,22 +44,40 @@ app.use(function(req, res, next) {
     next();
     });
 
-app.post('/api/posts', function(req, res){
-    console.log("post successful");
-    console.log(req.body.title);
-    console.log(req.body.content);
-    console.log(req.body.rating);
-    console.log(req.body.city);
 
-    PostData.create({
-        title:req.body.title,
-        content:req.body.content,
-        city:req.body.city
-    });
+    app.post('/api/posts', function(req, res){
+        console.log("post successful");
+        console.log(req.body.title);
+        console.log(req.body.content);
+        console.log(req.body.rating);
+        console.log(req.body.city);
+    
+        PostData.create({
+            title:req.body.title,
+            content:req.body.content,
+            city:req.body.city,
+            rating:req.body.rating
+        });
+    
+        res.send("Post added");
+    
+    })
 
-    res.send("Post added");
-
-})
+    app.post('/api/upcoming', function(req, res){
+        console.log("post successful");
+        console.log(req.body.country);
+        console.log(req.body.city);
+        console.log(req.body.year);
+    
+        PostData.create({
+            country:req.body.country,
+            city:req.body.city,
+            year:req.body.year
+        });
+    
+        res.send("Upcoming journey added added");
+    
+    })
 
 app.get('/api/posts', function(req, res){
 
@@ -60,7 +87,7 @@ app.get('/api/posts', function(req, res){
     })
 })
 
-//update
+//update for reviews
 app.get('/api/posts/:id', function(req, res){
     console.log("Read doc with ID" + req.params.id);
 
@@ -74,6 +101,7 @@ app.put('/api/posts/:id', function(req, res){
     console.log(req.body.title);
     console.log(req.body.content);
     console.log(req.body.city);
+    console.log(req.body.rating);
 
     PostData.findByIdAndUpdate(req.params.id, req.body,
     function(err, data){

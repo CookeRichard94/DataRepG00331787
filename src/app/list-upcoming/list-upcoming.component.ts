@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {PostService} from '../services/post.service';
 import { Observable } from 'rxjs';
-import {Post} from '../post.model';
+import {Upcoming} from '../upcoming.model';
+import { UpcomingService } from '../services/upcoming.service';
 
 @Component({
   selector: 'app-list-upcoming',
@@ -10,14 +10,14 @@ import {Post} from '../post.model';
 })
 export class ListUpcomingComponent implements OnInit {
 
-  posts: any = [];
+  upcoming: any = [];
 
-  constructor(private ps:PostService){}
+  constructor(private ps:UpcomingService){}
 
   ngOnInit(){
 
     this.ps.getPostsData().subscribe(data => {
-        this.posts = data;
+        this.upcoming = data;
     });
 
 
