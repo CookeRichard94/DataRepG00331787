@@ -11,7 +11,7 @@ export class UpcomingService {
   constructor(private http: HttpClient) { }
   
     getPostsData(): Observable<any> {
-      return this.http.get("http://localhost:8081/api/posts");
+      return this.http.get("http://localhost:8081/api/upcoming");
     }
 
   private upcoming: Upcoming[] = [];

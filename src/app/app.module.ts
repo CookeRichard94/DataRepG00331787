@@ -17,7 +17,6 @@ import { MatInputModule,
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
 import { AddUpcomingComponent } from './add-upcoming/add-upcoming.component';
-import { PhotoGalleryComponent } from './photo-gallery/photo-gallery.component';
 import { ListUpcomingComponent } from './list-upcoming/list-upcoming.component';
 import { UpdateUpcomingComponent } from './update-upcoming/update-upcoming.component';
 
@@ -43,10 +42,6 @@ const appRoutes: Routes = [
   component: ListUpcomingComponent
   },
   {
-    path: 'photos',
-    component: PhotoGalleryComponent
-  },
-  {
     path: 'edit2/:id',
     component: UpdateUpcomingComponent
   }
@@ -62,7 +57,6 @@ const appRoutes: Routes = [
     PostCreateComponent,
     PostEditComponent,
     AddUpcomingComponent,
-    PhotoGalleryComponent,
     ListUpcomingComponent,
     UpdateUpcomingComponent
   ],

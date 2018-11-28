@@ -9,7 +9,7 @@
         required
         minlength="3"
         #title="ngModel">
-      <mat-error *ngIf="country.invalid">Please enter the destination country.</mat-error>
+      <mat-error *ngIf="title.invalid">Please enter the country.</mat-error>
     </mat-form-field>
     <mat-form-field>
       <input
@@ -20,17 +20,17 @@
         required
         minlength="3"
         #title="ngModel">
-      <mat-error *ngIf="title.invalid">Please enter the destination city.</mat-error>
+      <mat-error *ngIf="title.invalid">Please enter the city.</mat-error>
     </mat-form-field>
     <mat-form-field>
-      <textarea
+      <input
         matInput
+        type="text"
         name="year"
         ngModel
         required
-        minlength="4"
-        #content="ngModel"></textarea>
-      <mat-error *ngIf="content.invalid">Please the year of your planned journey.</mat-error>
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter the year of your journey</mat-error>
     </mat-form-field>
     <button
       mat-raised-button

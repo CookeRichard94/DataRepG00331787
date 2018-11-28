@@ -59,7 +59,7 @@ app.use(function(req, res, next) {
             rating:req.body.rating
         });
     
-        res.send("Post added");
+        res.send("Review added added");
     
     })
 
@@ -69,7 +69,7 @@ app.use(function(req, res, next) {
         console.log(req.body.city);
         console.log(req.body.year);
     
-        PostData.create({
+        UpcomingData.create({
             country:req.body.country,
             city:req.body.city,
             year:req.body.year
@@ -96,6 +96,15 @@ app.get('/api/posts/:id', function(req, res){
     });
 })
 
+app.get('/api/upcoming/:id', function(req, res){
+    console.log("Read doc with ID" + req.params.id);
+
+    UpcomingData.findById(req.params.id, function (err, data) {
+        res.json(data);
+    });
+})
+
+//update for reviews
 app.put('/api/posts/:id', function(req, res){
     console.log("Update called on " + req.params.id);
     console.log(req.body.title);
@@ -109,10 +118,35 @@ app.put('/api/posts/:id', function(req, res){
     })
 })
 
+//update for upcoming
+app.put('/api/upcoming/:id', function(req, res){
+    console.log("Update called on " + req.params.id);
+    console.log(req.body.country);
+    console.log(req.body.city);
+    console.log(req.body.year);
+
+    UpcomingData.findByIdAndUpdate(req.params.id, req.body,
+    function(err, data){
+        res.send(data);
+    })
+})
+
+//delete for posts
 app.delete('/api/posts/:id', function(req,res){
     console.log(req.params.id);
 
     PostData.deleteOne({_id:req.params.id}, function(err, data){
+        if(err)
+            res.send(err);
+        res.send(data);
+    });
+})
+
+//delete for upcoming
+app.delete('/api/upcoming/:id', function(req, res){
+    console.log(req.params.id);
+
+    UpcomingData.deleteOne({_id:req.params.id}, function(err,data){
         if(err)
             res.send(err);
         res.send(data);
