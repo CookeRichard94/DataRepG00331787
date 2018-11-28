@@ -59,7 +59,7 @@ app.use(function(req, res, next) {
             rating:req.body.rating
         });
     
-        res.send("Review added added");
+        res.send("Review added ");
     
     })
 
@@ -82,6 +82,14 @@ app.use(function(req, res, next) {
 app.get('/api/posts', function(req, res){
 
     PostData.find(function(err,data){
+
+    res.json(data);
+    })
+})
+
+app.get('/api/upcoming', function(req, res){
+
+    UpcomingData.find(function(err,data){
 
     res.json(data);
     })
