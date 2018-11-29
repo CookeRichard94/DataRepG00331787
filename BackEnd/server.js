@@ -80,22 +80,24 @@ app.use(function(req, res, next) {
     
     })
 
-app.get('/api/posts', function(req, res){
+    //returning the data of api/posts
+    app.get('/api/posts', function(req, res){
 
-    PostData.find(function(err,data){
+        PostData.find(function(err,data){
 
-    res.json(data);
+        res.json(data);
+        })
     })
-})
 
-app.get('/api/upcoming', function(req, res){
-    console.log("upcoming");
-    UpcomingData.find(function(err,data){
-        if(err)
-        console.log(err);
-    res.json(data);
+    //returning the data of api/upcoming
+    app.get('/api/upcoming', function(req, res){
+        //console.log("upcoming");
+        UpcomingData.find(function(err,data){
+            if(err)
+            console.log(err);
+        res.json(data);
+        })
     })
-})
 
 //update for reviews
 app.get('/api/posts/:id', function(req, res){
@@ -106,6 +108,7 @@ app.get('/api/posts/:id', function(req, res){
     });
 })
 
+//update for upcoming
 app.get('/api/upcoming/:id', function(req, res){
     console.log("Read doc with ID" + req.params.id);
 

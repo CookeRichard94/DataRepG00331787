@@ -26,7 +26,7 @@ export class UpdateUpcomingComponent implements OnInit {
   }
 
   onEditPost(form: NgForm){
-    this.service.updatePost(this.upcoming._id, form.value.country, form.value.year, form.value.city)
+    this.service.updatePost(this.upcoming._id, form.value.country, form.value.city, form.value.year )
     .subscribe(() => 
   {
     this.router.navigate(['/upcoming']);
