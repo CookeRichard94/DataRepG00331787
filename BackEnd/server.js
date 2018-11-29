@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
     next();
     });
 
-
+    //post for reviews
     app.post('/api/posts', function(req, res){
         console.log("post successful");
         console.log(req.body.title);
@@ -63,6 +63,7 @@ app.use(function(req, res, next) {
     
     })
 
+    //post for upcoming
     app.post('/api/upcoming', function(req, res){
         console.log("post successful");
         console.log(req.body.country);
@@ -88,9 +89,10 @@ app.get('/api/posts', function(req, res){
 })
 
 app.get('/api/upcoming', function(req, res){
-
+    console.log("upcoming");
     UpcomingData.find(function(err,data){
-
+        if(err)
+        console.log(err);
     res.json(data);
     })
 })

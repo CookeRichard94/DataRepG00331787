@@ -9,7 +9,8 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent implements OnInit {
-post : any = [];
+
+  post : any = [];
   constructor(private route:ActivatedRoute, private service:PostService,
   private router:Router) { }
 
@@ -28,7 +29,7 @@ post : any = [];
     this.service.updatePost(this.post._id, form.value.title, form.value.content, form.value.city, form.value.rating)
     .subscribe(() => 
   {
-    this.router.navigate(['/list']);
+    this.router.navigate(['/review']);
   });
   }
 
