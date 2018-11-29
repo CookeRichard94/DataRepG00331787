@@ -10,14 +10,14 @@
 <mat-accordion multi="true" *ngIf="upcoming.length > 0">
   <mat-expansion-panel [expanded]="true" *ngFor="let upcoming of upcomings">
     <mat-expansion-panel-header>
-      {{ upcoming.country }}
+      {{ upcomings.country }}
     </mat-expansion-panel-header>
-    <p>{{ upcoming.city }}</p>
-    <p>{{ upcoming.year }}</p>
+    <p>{{ upcomings.city }}</p>
+    <p>{{ upcomings.year }}</p>
     <mat-action-row>
       <button mat-button [routerLink]="['/edit', upcomings._id]" color="primary">EDIT</button>
       <button mat-button color="warn" (click) = "onDelete(post._id)">DELETE</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<p class="info-text mat-body-1" *ngIf="posts.length <= 0">No upcoming trips planned yet!</p> 
+<p class="info-text mat-body-1" *ngIf="upcoming.length <= 0">No upcoming trips planned yet!</p> 

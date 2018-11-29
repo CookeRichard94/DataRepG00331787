@@ -1,4 +1,7 @@
+<mat-toolbar color="warn">Add a review!</mat-toolbar>
+
 <mat-card>
+  <h3>Enter destination(Country)</h3>
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
     <mat-form-field>
       <input
@@ -11,6 +14,7 @@
         #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter the country.</mat-error>
     </mat-form-field>
+    <h3>Enter destination(City)</h3>
     <mat-form-field>
       <input
         matInput
@@ -22,6 +26,7 @@
         #title="ngModel">
       <mat-error *ngIf="title.invalid">Please enter the city.</mat-error>
     </mat-form-field>
+    <h3>Enter review of your journey</h3>
     <mat-form-field>
       <textarea
         matInput
@@ -32,6 +37,7 @@
         #content="ngModel"></textarea>
       <mat-error *ngIf="content.invalid">Please a review of your journey.</mat-error>
     </mat-form-field>
+    <h3>Enter rating(1-5)</h3>
     <mat-form-field>
       <input
         matInput
